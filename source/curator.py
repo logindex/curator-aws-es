@@ -59,8 +59,8 @@ class CuratorAwsEs:
 
                 for index_to_delete in indexes[0:len(indexes) - keep]:
                     try:
-                        # es.indices.delete(index_to_delete)
                         self.logger.info("Deleting: {}".format(index_to_delete))
+                        es.indices.delete(index_to_delete)
                         deleted[cluster_name].append(index_to_delete)
                     except:
                         self.logger.error("Error occurred while deleting index '{}'".format(index_to_delete))
