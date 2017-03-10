@@ -1,0 +1,25 @@
+---
+# Define Elasticsearch Clusters and indices here, to have them periodically deleted.
+# curator-aws-es assumes indices are created by Firehose and follow its naming convention:
+# http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-index-rotation
+
+- name: Sample Cluster 1
+  endpoint: elasticsearch-xxxxxxxxx.eu-west-1.es.amazonaws.com
+  access_key_cipher: aaaaaaaaaaa
+  access_secret_cipher: bbbbbbbbbbbbbb
+  indices:
+    - prefix: sampleindex-
+      rotation: OneWeek
+      keep: 7
+
+- name: Sample Cluster 2
+  endpoint: elasticsearch-yyyyyyyyy.eu-west-1.es.amazonaws.com
+  access_key_cipher: aaaaaaaaaaa
+  access_secret_cipher: bbbbbbbbbbbbbb
+  indices:
+    - prefix: sampleindex1-
+      rotation: OneDay
+      keep: 24
+    - prefix: sampleindex2-
+      rotation: OneMonth
+      keep: 2
